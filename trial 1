@@ -1,0 +1,147 @@
+from tkinter import *
+import customtkinter 
+from PIL import Image,ImageTk,ImageOps
+
+
+window = Tk()
+
+window.title("proj_trial")
+
+heading_1 = Label(window,text= " Live to Eat " ,font = ('Bauhaus93',26),fg='yellow',bg='brown')
+
+heading_1.pack(padx=50,pady=0)
+
+
+img_chef = Image.open("C:\\PYTHON PROGRAMS\\chef_image.png")
+
+bord_img_chef = ImageOps.expand(img_chef,border=(10,10),fill='black')
+
+phto_chef = ImageTk.PhotoImage(bord_img_chef)                                           
+
+chef_label = Label(window,image=phto_chef)
+chef_label.pack()
+
+
+img_star = Image.open("C:\\PYTHON PROGRAMS\\5stars.jpeg")
+phto_star = ImageTk.PhotoImage(img_star)
+star_label = Label(window,image= phto_star)
+star_label.place(x=200,y=500)
+
+
+def btnentcol(event):
+    event.widget["bg"]="blue"
+
+    
+def btnextcol(event):
+    event.widget["bg"]="green"
+
+
+def new_window_1():
+    root_1= Tk()
+    root_1.configure(bg='lightblue')
+    LB1 = Label(root_1,text = "Select the table you wish to sit in",font =("Chiller",26),fg="Black",bg="lightblue")
+    LB1.place(x=100,y=10)
+    
+    
+    global b_1_table ,b_2_table ,b_3_table ,b_4_table ,b_5_table ,b_6_table ,b_7_table
+    b_1_table = Button(root_1,text="TABLE 1",height=2,width=6,bg="red",relief=RAISED)
+    b_1_table.place(x=5,y=50)
+    b_2_table = Button(root_1,text="TABLE 2",height=2,width=6,bg="red",relief=RAISED)
+    b_2_table.place(x=5,y=100)
+    b_3_table = Button(root_1,text="TABLE 3",height=2,width=6,bg="red",relief=RAISED)
+    b_3_table.place(x=5,y=150)
+    b_4_table = Button(root_1,text="TABLE 4",height=2,width=6,bg="red",relief=RAISED)
+    b_4_table.place(x=5,y=200)
+    b_5_table = Button(root_1,text="TABLE 5",height=2,width=6,bg="red",relief=RAISED)
+    b_5_table.place(x=5,y=250)
+    b_6_table = Button(root_1,text="TABLE 6",height=2,width=6,bg="red",relief=RAISED)
+    b_6_table.place(x=5,y=300)
+    b_7_table = Button(root_1,text="TABLE 7",height=2,width=6,bg="red",relief=RAISED)
+    b_7_table.place(x=5,y=350)
+    
+
+    b_1_table.bind("<Enter>",btnentcol)
+    b_1_table.bind("<Leave>",btnextcol)
+
+    b_2_table.bind("<Enter>",btnentcol)
+    b_2_table.bind("<Leave>",btnextcol)
+
+    b_3_table.bind("<Enter>",btnentcol)
+    b_3_table.bind("<Leave>",btnextcol)
+
+    b_4_table.bind("<Enter>",btnentcol)
+    b_4_table.bind("<Leave>",btnextcol)
+
+    b_5_table.bind("<Enter>",btnentcol)
+    b_5_table.bind("<Leave>",btnextcol)
+
+    b_6_table.bind("<Enter>",btnentcol)
+    b_6_table.bind("<Leave>",btnextcol)
+
+    b_7_table.bind("<Enter>",btnentcol)
+    b_7_table.bind("<Leave>",btnextcol)
+    
+    
+def confirm_choice():
+
+    global b_1_table ,b_2_table ,b_3_table ,b_4_table ,b_5_table ,b_6_table ,b_7_table 
+
+    
+        
+    b_new_window = Button(window,text ="Enter to open new window",command = new_window_1)
+    b_new_window.place(x=15,y=300)
+
+def conf_num_ppl():
+
+        btn_numppl.configure(state="disabled")
+        txt_numppl.configure(state="disabled")
+        confirm_choice()
+
+def dis_dd():
+
+    
+    
+    dropdowntrial.configure(state="disabled")
+
+
+
+numppl_label = Label(window,text = "Enter the number of people dining",font=("Bauhaus93",15),fg="black",bg="orange")
+numppl_label.place(x=15,y=150)
+txt_numppl = Text(window,font=("Bauhaus93",15),width=5,height=1)
+txt_numppl.place(x=15,y=200)
+btn_numppl = Button(window,text="Confirm number of people",font=("Bauhaus93",15),command=conf_num_ppl,fg="black",bg="orange")
+btn_numppl.place(x=15,y=250)
+
+
+clicked = StringVar()
+clicked.set("Enter choice of dining")
+dropdowntrial= OptionMenu(window,clicked,"Alacarte","Buffet")
+dropdowntrial.place(x=15,y=50)
+
+btn_choice_conf = Button(window,text = "Confirm Choice ?",command = dis_dd)
+btn_choice_conf.place(x=50,y=100)
+
+'''
+btn_inventory = Button(window,text = "Show Inventory",command = show_invent)
+btn_inventory.place()
+'''
+
+window.mainloop()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
